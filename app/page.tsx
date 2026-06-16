@@ -59,12 +59,37 @@ const PORTFOLIO = [
   {
     name: "MG CERVIS",
     tag: "Tunnel de vente + capture de leads",
-    text: "Landing page de génération de prospects pour une entreprise d'aménagement : galerie, formulaire de devis, emails automatiques et tableau de bord des leads.",
+    text: "Landing de génération de prospects pour une entreprise d'aménagement : galerie, formulaire de devis, emails automatiques et tableau de bord des leads.",
+    image: "/realisations/mg-cervis.jpg",
+    url: "https://mg-cervis.vercel.app",
   },
   {
     name: "TableFlow",
-    tag: "SaaS — digitalisation des restaurants",
-    text: "Plateforme SaaS conçue pour digitaliser la gestion et la présence en ligne des restaurants.",
+    tag: "SaaS — Restaurants",
+    text: "Plateforme SaaS de digitalisation des restaurants : menus, réservations, commandes en ligne et paiements, dans un tableau de bord unique.",
+    image: "/realisations/tableflow.jpg",
+    url: "https://tableflow-gilt.vercel.app",
+  },
+  {
+    name: "GestHotel",
+    tag: "SaaS — Gestion hôtelière",
+    text: "Solution complète de gestion d'hôtel : réservations, chambres, restaurant QR et facturation Mobile Money, pensée pour l'Afrique de l'Ouest.",
+    image: "/realisations/gesthotel.jpg",
+    url: "https://gestb-hotel.vercel.app",
+  },
+  {
+    name: "GestBTP",
+    tag: "SaaS — Chantiers BTP",
+    text: "Plateforme tout-en-un pour piloter les chantiers : rapports, tâches, photos et suivis centralisés pour les entreprises de construction.",
+    image: "/realisations/gestbtp.jpg",
+    url: "https://gestbtp.vercel.app",
+  },
+  {
+    name: "Mémoires Intactes",
+    tag: "Tunnel de vente — capture de leads",
+    text: "Landing de capture pour un guide de restauration de photos de famille : page de conversion optimisée, formulaire d'inscription et envoi automatique du guide.",
+    image: "/realisations/pageconversion.jpg",
+    url: "https://pageconversion.vercel.app",
   },
 ];
 
@@ -212,18 +237,35 @@ export default function Home() {
               Des projets qui convertissent
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-7 md:grid-cols-2">
             {PORTFOLIO.map((p) => (
-              <div
+              <a
                 key={p.name}
-                className="rounded-2xl border border-stone-200 p-8 transition hover:border-gold/50 hover:shadow-xl"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group overflow-hidden rounded-2xl border border-stone-200 transition hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
               >
-                <span className="inline-block rounded-full bg-navy/5 px-3 py-1 text-xs font-semibold text-gold-deep">
-                  {p.tag}
-                </span>
-                <h3 className="mt-4 text-2xl font-extrabold">{p.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy/60">{p.text}</p>
-              </div>
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-stone-200 bg-cream">
+                  <Image
+                    src={p.image}
+                    alt={`Aperçu du projet ${p.name}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-7">
+                  <span className="inline-block rounded-full bg-navy/5 px-3 py-1 text-xs font-semibold text-gold-deep">
+                    {p.tag}
+                  </span>
+                  <h3 className="mt-4 flex items-center gap-2 text-2xl font-extrabold">
+                    {p.name}
+                    <ArrowRight className="h-5 w-5 -translate-x-1 text-gold opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-navy/60">{p.text}</p>
+                </div>
+              </a>
             ))}
           </div>
         </div>
